@@ -1,9 +1,12 @@
-<?php include "api.php"; ?>
+<?php
+include "api.php";
+header('Content-Type: text/html; charset=UTF-8');
+?>
 <!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -53,13 +56,13 @@
                                     aria-label="Tải xuống" required>
                                 <button type="submit" class="form-control">Kiểm tra</button>
                             </div>
-                            <?php if (!$err) {?>
-                            <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
-                                <strong>Liên kết lỗi!</strong> Vui lòng kiểm tra lại liên kết.
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                    aria-label="Close"></button>
-                            </div>
-                            <?php }?>
+                            <?php if (!$err) { ?>
+                                <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+                                    <strong>Liên kết lỗi!</strong> Vui lòng kiểm tra lại liên kết.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            <?php } ?>
                         </form>
                     </div>
                 </div>

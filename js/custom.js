@@ -48,6 +48,7 @@
       Array.from(timeline).forEach(isScrollIntoView);
     });
   
+
   })(window.jQuery);
 
 

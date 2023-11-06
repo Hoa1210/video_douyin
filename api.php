@@ -11,7 +11,7 @@ $url = "";
 $err = true;
 
 if (isset($_POST['url']) && $_POST['url'] != '') {
-    $url = $_POST['url'];
+    $url = extractDouyinUrl($_POST['url']);
     $client = new Client();
     $response = $client->request('GET', $api . $url);
     $body = json_decode($response->getBody());
@@ -24,8 +24,22 @@ if (isset($_POST['url']) && $_POST['url'] != '') {
     if (!$status) {
         $err = false;
     }
-}else{
-    $err = false;
+}
+function extractDouyinUrl($url)
+{
+    $pattern1 = '/https:\/\/v\.douyin\.com\/[a-zA-Z0-9]+/';
+    $pattern2 = '/https:\/\/www\.tiktok\.com\/@tiktok\/video\/[0-9]+/';
+    if (preg_match($pattern1, $url)) {
+        preg_match($pattern1, $url, $matches);
+        return $matches[0];
+    }
+
+    if (preg_match($pattern2, $url)) {
+        preg_match($pattern2, $url, $matches);
+        return $matches[0];
+    }
+
+    return false;
 }
 
 ?>
