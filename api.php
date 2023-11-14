@@ -10,7 +10,7 @@ $status = false;
 $url = "";
 $err = true;
 
-if (isset($_POST['url']) && $_POST['url'] != '') {
+if (!empty($_POST['url'])) {
     $url = extractDouyinUrl($_POST['url']);
     $client = new Client();
     $response = $client->request('GET', $api . $url);
